@@ -1,5 +1,4 @@
 from tkinter import *
-# from tkinter.colorchooser import askcolor
 from PIL import Image, ImageTk
 
 class Paint(object):
@@ -16,9 +15,6 @@ class Paint(object):
                           bd = 2, relief = RAISED)
        self.Title.grid(row = 0, column = 5)
 
-       # self.color_button = Button(self.root, text='color', command=self.choose_color)
-       # self.color_button.grid(row=0, column=2)
-
        self.pen_button = Button(self.root, text='brush', command=self.use_pen)
        self.pen_button.grid(row=0, column=1)
 
@@ -27,9 +23,6 @@ class Paint(object):
                                                  "\n * If you want to change the thickness of your pen, move the slider.\n Let's get creating!", relief = RIDGE,
                                 font = "Arial 18", bd= 2, justify = LEFT, height = 8)
        self.actualInstr.grid (rowspan = 2, row = 0, column = 6 )
-
-       # self.colorLabel = Label(self.root, text = "Colors", font = "Arial 18", bd= 2, justify = CENTER)
-       # self.colorLabel.grid(rowspan= 2, row = 1, column = 6)
 
        self.redLabel = Button(self.root, text = "Red", font = "Arial 12", fg = "red", justify = CENTER, command = self.redCallback)
        self.redLabel.grid(rowspan = 3, row = 5, column = 1, columnspan = 1)
@@ -53,7 +46,7 @@ class Paint(object):
        self.choose_size_button = Scale(self.root, from_=1, to=10,orient = HORIZONTAL)
        self.choose_size_button.grid(row=0, column=3)
 
-       self.c = Canvas(self.root, bg='white', width=600, height=600,relief= RAISED, bd= 2)
+       self.c = Canvas(self.root, bg='white', width=600, height=600,relief= RAISED, bd= 2,cursor = "star")
        self.c.grid(row=1, columnspan=5, column=1, padx=20, pady=20, rowspan=2)
 
 
@@ -73,10 +66,6 @@ class Paint(object):
 
    def use_pen(self):
        self.activate_button(self.pen_button)
-
-   # def choose_color(self):
-   #     self.eraser_on = False
-   #     self.color = askcolor(color=self.color)[1]
 
    def use_eraser(self):
        self.activate_button(self.eraser_button, eraser_mode=True)
